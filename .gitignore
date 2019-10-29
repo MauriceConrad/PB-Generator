@@ -3,7 +3,9 @@ Thumbs.db
 ehthumbs.db
 ehthumbs_vista.db
 
+stats/*
 stats/
+stats
 
 # Dump file
 *.stackdump
