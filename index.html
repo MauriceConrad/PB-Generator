@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <script src="js/imageCompressor.js" charset="utf-8"></script>
-    <script src="js/pb.js" charset="utf-8"></script>
+    <script src="js/pb-new.js" charset="utf-8"></script>
     <link rel="stylesheet" href="css/pb.css">
     <meta charset="utf-8">
     <title>PB</title>
@@ -14,7 +14,53 @@
     <script type="text/javascript">
       const e = document.querySelector(".pb");
 
-      const app = new ProfilePicGenerator(e);
+      const app = new ProfilePicGenerator(e, {
+        "name": "Hamburg 21.02",
+        "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/profile/hamburg2020/template.json",
+        "preview": "data/templates/profile/hamburg2020/preview.png",
+        "documents": [
+          {
+            "width": 600,
+            "height": 600,
+            "src": "data/templates/profile/hamburg2020/document.svg",
+            "alias": "1:1"
+          }
+        ],
+        "fonts": [
+          {
+            "name": "Jost-600",
+            "src": "fonts/Jost/Jost-600-Semi.ttf",
+            "mime": "font/truetype"
+          },
+          {
+            "name": "Jost-700",
+            "src": "fonts/Jost/Jost-700-Bold.ttf",
+            "mime": "font/truetype"
+          },
+          {
+            "name": "Jost-400",
+            "src": "fonts/Jost/Jost-400-Book.ttf",
+            "mime": "font/truetype"
+          }
+        ],
+        "fields": [
+          {
+            "type": "Selection",
+            "description": "Background",
+            "key": "pic",
+            "default": {
+              "data": "data/templates/profile/hamburg2020/bg.jpg"
+            },
+            "properties": {
+              "items": [
+                {
+                  "type": "file"
+                }
+              ]
+            }
+          }
+        ]
+      }, {});
 
       console.log(app);
     </script>

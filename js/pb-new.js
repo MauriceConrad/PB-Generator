@@ -9,11 +9,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 var ProfilePicGenerator =
 /*#__PURE__*/
 function () {
-  function ProfilePicGenerator(element) {
+  function ProfilePicGenerator(element, template, data) {
     _classCallCheck(this, ProfilePicGenerator);
 
-    console.log(element);
+
     this.e = element;
+    this.template = template;
+    this.data = data;
     this.init();
   }
 
@@ -34,7 +36,7 @@ function () {
       });
       this.picturePreview = picturePreview;
       this.previewImg = Object.assign(document.createElement("img"), {
-        src: langDescriptor.template.preview
+        src: this.template.preview
       });
       picturePreview.append(this.previewImg);
       this.loadingScreen = Object.assign(document.createElement("div"), {
@@ -91,7 +93,7 @@ function () {
       });
       btnDownload.append('Profilbild herunterladen');
       btnDownload.addEventListener("click", function () {
-        ProfilePicGenerator.download(picturePreview.getElementsByTagName("img")[0].src, "Profile Picture", "image/png");
+        ProfilePicGenerator.download(picturePreview.getElementsByTagName("img")[0].src, "Profile Picture.png", "image/png");
       });
       var msgDownload = Object.assign(document.createElement("span"), {
         className: 'msg-download',
@@ -126,16 +128,16 @@ function () {
     key: "render",
     value: function render(dataUrl, template) {
       return new Promise(function (resolve, reject) {
-
+        console.log(template);
 
         const body = {
-          template: langDescriptor.template,
+          template: template,
           doc: 0,
           data: Object.assign({
             "pic": {
               "data": dataUrl
             }
-          }, langDescriptor.data)
+          }, {})
         };
         console.log(body);
 
@@ -351,13 +353,13 @@ function () {
 }();
 
 ProfilePicGenerator.__apiEndpoint = 'https://api.fridaysforfuture.de/emulate';
-ProfilePicGenerator.__templateUrl = 'https://dev.maurice-conrad.eu/toolpic/data/templates/profile/template.json';
+
 ProfilePicGenerator.__languages = {
   th: {
     template: {
       "name": "Profile Picture",
       "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/profile/template.json",
-      "preview": "https://toolpic.fridaysforfuture.de/data/templates/profile/th/preview.jpg",
+      "preview": "https://fridaysforfuture.de/wp-content/uploads/2019/10/Profile-Picture-1.png",
       "documents": [
         {
           "width": 1200,
